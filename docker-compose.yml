@@ -18,7 +18,7 @@ services:
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins
-    user: root  # Run as root user
+    user: "0"  # Run as root user
     networks:
       - tafordqenetwork
     ports:
