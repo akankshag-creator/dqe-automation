@@ -17,7 +17,7 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts
-    container_name: jenkins_cont
+    container_name: jenkins_cntnr
     user: "0"  # Run as root user
     networks:
       - tafordqenetwork
