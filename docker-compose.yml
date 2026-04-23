@@ -17,13 +17,13 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts
-    container_name: jenkins
+    container_name: jenkins_cont
     user: "0"  # Run as root user
     networks:
       - tafordqenetwork
     ports:
-      - "8080:8080"
-      - "50000:50000"
+      - "8081:8080"
+      - "50001:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
 
