@@ -35,16 +35,10 @@ def get_duplicate_rows():
 
 
 # Pytest hook to mark unmarked tests with a custom mark
-def pytest_configure(config):
-    config.addinivalue_line(
-        "markers", "unmarked: Automatically applied to tests without explicit markers"
-    )
-
-def pytest_collection_modifyitems(config, items):
+def pytest_collection_modifyitems(items):
     for item in items:
-        explicit_markers = [
-            mark for mark in item.own_markers 
-            if mark.name not in ("parametrize", "validate_csv")
-        ]       
-        if not explicit_markers:
+        existing_markers = [mark.name for mark in item.iter_markers()]
+        print(f"{item.name}: {existing_markers}")
+        
+        if not existing_markers:
             item.add_marker(pytest.mark.unmarked)

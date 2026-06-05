@@ -22,16 +22,11 @@ def test_validate_schema(read_csv_file, validate_schema):
     assert validate_schema(df.columns, expected_schema), (f"Schema mismatch. ")
 
 @pytest.mark.validate_csv
-def test_age_column_valid(read_csv_file):
-    df = read_csv_file("src\data\data.csv")
-    invalid_age = df[(df["age"] < 0) |(df["age"] > 100)]
-    assert invalid_age.empty, (f"Invalid age values found:\n{invalid_rows}")
-
 @pytest.mark.skip(reason="Age validation not required")
 def test_age_column_valid(read_csv_file):
     df = read_csv_file("src\data\data.csv")
     invalid_age = df[(df["age"] < 0) |(df["age"] > 100)]
-    assert invalid_age.empty
+    assert invalid_age.empty, (f"Invalid age values found:\n{invalid_rows}")
 
 
 @pytest.mark.validate_csv
