@@ -51,7 +51,7 @@ def test_active_players(read_csv_file, user_id, expected_is_active):
     assert actual_value == expected_is_active
 
 @pytest.mark.validate_csv
-def test_active_player(read_csv_file, expected_is_active):
+def test_active_player(read_csv_file):
     df = read_csv_file("src\data\data.csv")
     matching_rows = df[df["id"] == 2]
     assert not matching_rows.empty, f"id=2 not found in file"
